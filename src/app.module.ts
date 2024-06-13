@@ -9,7 +9,7 @@ import { UserController } from './controller/user.controller';
 
 @Module({
   controllers: [AppController,UserController],
-  imports: [,TypeOrmModule.forRootAsync({ useClass: TypeormService }), TypeOrmModule.forFeature([Users])],
+  imports: [TypeOrmModule.forRootAsync({ useClass: TypeormService }), TypeOrmModule.forFeature([Users])],
   providers: [AppService, TypeormService, UserService],
 })
 export class AppModule { }
