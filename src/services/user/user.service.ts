@@ -15,6 +15,9 @@ export class UserService {
         return this.usersRepository.find();
     }
 
+    async login(username: string, password: string) {
+        return await this.usersRepository.findOneBy({ username: username, password: password });
+    }
 
     async findOne(id: string): Promise<Users> {
         // Assuming id is a string, if it's a number, change the type accordingly

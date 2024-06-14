@@ -3,7 +3,7 @@ import { CreateUserDto } from 'src/models/user/create-user.dto';
 import { Users } from 'src/models/user/users.model';
 import { UserService } from 'src/services/user/user.service';
 
-@Controller('users')
+@Controller('api/users')
 export class UserController {
   constructor(private readonly usersService: UserService) { }
 
@@ -15,6 +15,11 @@ export class UserController {
   @Get(':id')
   findOne(@Param('id') id: string): Promise<Users> {
     return this.usersService.findOne(id);
+  }
+
+  @Get(':username/:password')
+  login(@Param('username') username: string, @Param('password') password: string): Promise<Users> {
+    return this.usersService.login(username, password);
   }
 
   @Post()
